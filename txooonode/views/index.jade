@@ -1,0 +1,24 @@
+extends layout
+
+block content
+    section.intor
+        if message
+            h3.indexmes #{message}
+        //如果用户登录或者注册成功并且没有在登录状态下点击注册或者登录
+        if success&&user
+            h1.welcome #{success}，欢迎 #{user} 来到 天下商机
+        else if !success&&user
+            h1.welcome 欢迎 #{user} 来到 天下商机
+        else
+            h1.welcome 欢迎来到 天下商机
+        h3.tech 天下商机是一个基于Node.js,使用express4.12.1,jade1.9.2以及MongoDB搭建起来的微博系统,是对Node.js开发指南一书中教学项目的重构。
+        p.btnlist
+            if user
+                a.login(href="/logout") 退出
+                a.userlink(href="/user/#{user}") 发布文章
+            else
+                a.login(href="/login") 登录
+                a.register(href="/reg") 注册
+    section.show
+
+
